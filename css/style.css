@@ -1,0 +1,316 @@
+/* Remove margens e preenchimentos padrão, e usa box-sizing border-box para controle total de tamanho */
+/*Escreva as linhas do código em português brasileiro*/
+* {
+  margin: 0; /* remove margens padrão */
+  padding: 0; /* remove preenchimentos padrão */
+  box-sizing: border-box;/* inclui bordas e preenchimentos no tamanho total dos elementos */
+}
+
+/* Estilo da área principal do jogo */
+.game-board {
+  width: 100%;
+  /* ocupa toda a largura da tela */
+  height: 600px;
+  /* altura fixa */
+  border-bottom: 15px solid green;
+  /* representa o chão */
+  margin: 0 auto;
+  /* centraliza horizontalmente */
+  position: relative;
+  /* para posicionar elementos fixos absolutamente */
+  overflow: hidden;
+  /* esconde qualquer conteúdo que ultrapasse os limites */
+  background: linear-gradient(#1900ff, #ffffff);
+  /* gradiente simulando o céu */
+}
+
+
+/* Estilo do cano (obstáculo) */
+.pipe {
+  position: absolute;
+  /* para se mover dentro da game-board */
+  bottom: 0;
+  /* posicionado no chão */
+  width: 75px;
+  /* largura do cano */
+  animation: pipe-animation 1.5s infinite linear;
+  /* animação contínua da direita para a esquerda */
+}
+
+
+#startScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #87CEEB 0%, #191970 100%);
+  /* Gradiente de cor vibrante */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  color: rgb(255, 255, 255);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  font-family: 'Arial Black', Gadget, sans-serif;
+  border: 10px solid rgb(0, 0, 0);
+  /* Borda chamativa de console */
+  box-sizing: border-box;
+}
+
+.title-main {
+  font-size: 6em; /* tamanho grande para destaque */
+  color: #FFd700;
+  /* Azul vibrante */
+  -webkit-text-stroke: 5px rgb(0, 0, 0);
+  /* Contorno amarelo */
+  margin-bottom: 5px; /* espaço abaixo do título */
+  letter-spacing: 8px; /* espaçamento entre letras */
+  transform: skew(-15deg);
+  /* Inclinação para efeito de título */
+}
+
+.title-sub {
+  font-size: 2.5em; /* tamanho menor para subtítulo */
+  margin-bottom: 40px; /* espaço abaixo do subtítulo */
+  color: #7CFC00; /* Verde limão */
+}
+
+/* NOVO: Mario em destaque */
+.mario-showcase {
+  width: 300px;
+  /* Tamanho maior para destaque */
+  height: auto;/* mantém proporção */
+  margin-bottom: 30px;
+  /* Animação simples de movimento para chamar atenção */
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+
+
+.info-box {
+  text-align: center; /* centraliza o texto */
+  background-color: rgba(0, 0, 0, 0.4); /* fundo semi-transparente */
+  padding: 20px 40px;/* espaçamento interno */
+  border-radius: 10px;/* cantos arredondados */
+}
+
+.recorde-start {
+  font-size: 1.5em;/* tamanho maior para destaque */
+  color: #FFFACD;/* Amarelo claro */
+  margin-bottom: 15px;/* espaço abaixo do recorde */
+}
+
+/* Estilo do botão de start */
+.start-button {
+  padding: 15px 30px;/* espaçamento interno */
+  font-size: 1.8em;/* tamanho grande para fácil clique */
+  font-weight: bold;/* texto em negrito */
+  color: rgb(0, 0, 0);/* texto preto */
+  background-color: #E4000F;/* vermelho vibrante */
+  border: 5px solid rgb(0, 0, 0);/* borda preta */
+  border-radius: 10px;/* cantos arredondados */
+  cursor: pointer;/* cursor de mãozinha */
+  box-shadow: 0 5px 0 rgb(0, 0, 0);/* sombra para efeito 3D */
+  transition: all 0.1s;/* transição suave para clique */
+  margin-bottom: 10px;/* espaço abaixo do botão */
+}
+
+.start-button:active {
+  box-shadow: 0 0 0 #a00;
+  transform: translateY(5px);/* efeito de clique */
+}
+
+.blink {
+  font-size: 1.2em; /* tamanho da fonte */
+  color: rgb(0, 0, 0);
+  animation: blink-animation 1s infinite steps(1, start);/* animação de piscar */
+}
+
+.instruction-restart {
+  font-size: 1.0em;
+  opacity: 0.7;/* texto um pouco transparente */
+  margin-top: 10px;/* espaço acima do texto */
+}
+
+/* Classe adicionada ao Mario quando ele pula */
+
+.jump {
+  animation: jump 500ms ease-out;
+  /* animação de pulo */
+}
+
+
+/* NOVO ESTILO CORRIGIDO: Garante que a imagem de Game Over ocupe a tela TODA */
+.game-over-image {
+  position: fixed;
+  /* FIXA a imagem em relação à tela (viewport) */
+  top: 0;
+  /* Alinhada ao topo da tela */
+  left: 0;
+  /* Alinhada à esquerda da tela */
+  width: 100vw;
+  /* 100% da largura da tela */
+  height: 100vh;
+  /* 100% da altura da tela */
+  z-index: 9999;
+  /* Fica acima de todos os outros elementos */
+  object-fit: cover;
+  /* Ajusta a imagem para caber na tela sem cortar, se preferir que ela cubra tudo, mude para 'cover' */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Opcional: Adiciona um fundo escuro transparente para destacar a mensagem */
+}
+
+/* Estilo do Mario */
+.mario {
+  width: 200px;
+  /* largura da imagem do Mario */
+  position: absolute;
+  /* para posicionamento dentro da game-board */
+  bottom: 0;
+  /* começa no chão */
+}
+
+
+/* Estilo do Mario agachado (aplicado quando a classe 'agachar' é adicionada ao Mario no JS) */
+.mario.agachar {
+  width: 150px;
+  /* Reduz a largura para simular agachado */
+}
+
+/* Estilo das nuvens */
+.cloud {
+  position: absolute;
+  /* para movimentação dentro da game-board */
+  top: 40px;
+  /* altura das nuvens em relação ao topo */
+  right: -350px;
+  /* começa fora da tela à direita */
+  width: 450px;
+  /* largura das nuvens */
+  animation: cloud-animation 20s linear infinite;
+  /* animação contínua e lenta */
+  pointer-events: none;
+  /* permite cliques passarem por ela */
+  opacity: 1;
+  /* um pouco transparente */
+  filter: brightness(2) saturate(0);
+
+}
+
+
+
+
+.score-container {
+  position: absolute;
+  /* Para ficar por cima da tela do jogo */
+  top: 10px;
+  left: 10px;/* canto superior esquerdo */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fundo semi-transparente */
+  color: white;
+  /* Texto branco */
+  font-family: Arial, sans-serif;
+  font-size: 1.5em;
+  /* Tamanho da fonte */
+  border-radius: 5px;
+  z-index: 10;
+  /* Garante que fique acima de outros elementos do jogo */
+  text-align: left;
+}
+
+#recordeDisplay {
+  font-size: 0.8em;
+  /* Recorde um pouco menor */
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+
+
+body {
+  background-color: black;
+  /* fundo preto fora do game */
+
+}
+
+/* Animação das nuvens se movendo da direita para a esquerda */
+@keyframes cloud-animation {
+  from {
+    right: -300px;
+    /* começa fora da tela */
+  }
+
+  to {
+    right: 100%;
+    /* vai até o lado esquerdo completamente */
+
+  }
+}
+
+/* Animação do cano se movendo da direita para a esquerda */
+@keyframes pipe-animation {
+  from {
+    right: -100px;
+    /* começa fora da tela à direita */
+  }
+
+  to {
+    right: 100%;
+    /* atravessa até sair pelo lado esquerdo */
+  }
+}
+
+
+
+/* Animação de pulo do Mario */
+@keyframes jump {
+
+  0% {
+    bottom: 0;
+    /* começa no chão */
+  }
+
+  30% {
+    bottom: 70;
+  }
+
+  40% {
+    bottom: 180px;
+    /* sobe até o ponto mais alto */
+  }
+
+  50% {
+    bottom: 180px;
+    /* permanece no ponto mais alto por um instante */
+  }
+
+  60% {
+    bottom: 180px;
+    /* ainda no ponto mais alto */
+  }
+
+  70% {
+    bottom: 70;
+  }
+
+  100% {
+    bottom: 0;
+    /* volta ao chão */
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+

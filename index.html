@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="./js/script.js" defer></script>
+
+    <title>Projeto Mario Teste</title>
+</head>
+
+<body>
+    
+
+    <div class="start-screen" id="startScreen"> 
+        <h1 class="title-main">PROJETO SUPER MÁRIO</h1>
+        <h2 class="title-sub">A Era do JavaScript</h2>
+
+        <img src="imgs/supermario_knocmls3.gif" class="mario-showcase">
+
+        <div class="info-box">
+            <p class="recorde-start" id="recordeStartDisplay">Recorde: 0</p>
+
+            <button id="startButton" class="start-button">APERTE AQUI PARA COMEÇAR</button>
+
+            <p class="blink instruction">Ou pressione ESPAÇO</p>
+            <p class="instruction-restart">Pressione 'R' a qualquer momento para Reiniciar.</p>
+        </div>
+    </div>
+    <div class="score-container" style="display:none;" id="mainScoreContainer">
+        <div id="recordeDisplay">Recorde: 0</div>
+        <div id="scoreDisplay">Pontuação: 0</div>
+    </div>
+
+    <div class="game-board" style="display:none;" id="mainGameBoard">
+
+        <img src="imgs/supermario_knocmls3.gif" class="mario">
+        <img src="imgs/pipe.png" class="pipe">
+        <div class="agachar"></div>
+
+        <img src="imgs/clouds.png" class="cloud">
+        <img src="imgs/game-over.jpg" class="game-over-image" id="gameOverImage" style="display:none;">
+
+        <audio src="somClick" src=""></audio>
+    </div>
+
+</body>
+
+</html>
