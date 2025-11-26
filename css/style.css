@@ -1,9 +1,12 @@
 /* Remove margens e preenchimentos padrão, e usa box-sizing border-box para controle total de tamanho */
 /*Escreva as linhas do código em português brasileiro*/
 * {
-  margin: 0; /* remove margens padrão */
-  padding: 0; /* remove preenchimentos padrão */
-  box-sizing: border-box;/* inclui bordas e preenchimentos no tamanho total dos elementos */
+  margin: 0;
+  /* remove margens padrão */
+  padding: 0;
+  /* remove preenchimentos padrão */
+  box-sizing: border-box;
+  /* inclui bordas e preenchimentos no tamanho total dos elementos */
 }
 
 /* Estilo da área principal do jogo */
@@ -12,7 +15,7 @@
   /* ocupa toda a largura da tela */
   height: 600px;
   /* altura fixa */
-  border-bottom: 15px solid green;
+  border-bottom: 15px solid #33B310;
   /* representa o chão */
   margin: 0 auto;
   /* centraliza horizontalmente */
@@ -60,28 +63,35 @@
 }
 
 .title-main {
-  font-size: 6em; /* tamanho grande para destaque */
+  font-size: 6em;
+  /* tamanho grande para destaque */
   color: #FFd700;
   /* Azul vibrante */
   -webkit-text-stroke: 5px rgb(0, 0, 0);
   /* Contorno amarelo */
-  margin-bottom: 5px; /* espaço abaixo do título */
-  letter-spacing: 8px; /* espaçamento entre letras */
+  margin-bottom: 5px;
+  /* espaço abaixo do título */
+  letter-spacing: 8px;
+  /* espaçamento entre letras */
   transform: skew(-15deg);
   /* Inclinação para efeito de título */
 }
 
 .title-sub {
-  font-size: 2.5em; /* tamanho menor para subtítulo */
-  margin-bottom: 40px; /* espaço abaixo do subtítulo */
-  color: #7CFC00; /* Verde limão */
+  font-size: 2.5em;
+  /* tamanho menor para subtítulo */
+  margin-bottom: 40px;
+  /* espaço abaixo do subtítulo */
+  color: #7CFC00;
+  /* Verde limão */
 }
 
 /* NOVO: Mario em destaque */
 .mario-showcase {
   width: 300px;
   /* Tamanho maior para destaque */
-  height: auto;/* mantém proporção */
+  height: auto;
+  /* mantém proporção */
   margin-bottom: 30px;
   /* Animação simples de movimento para chamar atenção */
   animation: bounce 1.5s infinite ease-in-out;
@@ -90,48 +100,71 @@
 
 
 .info-box {
-  text-align: center; /* centraliza o texto */
-  background-color: rgba(0, 0, 0, 0.4); /* fundo semi-transparente */
-  padding: 20px 40px;/* espaçamento interno */
-  border-radius: 10px;/* cantos arredondados */
+  text-align: center;
+  /* centraliza o texto */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* fundo semi-transparente */
+  padding: 20px 40px;
+  /* espaçamento interno */
+  border-radius: 10px;
+  /* cantos arredondados */
 }
 
 .recorde-start {
-  font-size: 1.5em;/* tamanho maior para destaque */
-  color: #FFFACD;/* Amarelo claro */
-  margin-bottom: 15px;/* espaço abaixo do recorde */
+  font-size: 1.5em;
+  /* tamanho maior para destaque */
+  color: #FFFACD;
+  /* Amarelo claro */
+  margin-bottom: 15px;
+  /* espaço abaixo do recorde */
 }
 
 /* Estilo do botão de start */
 .start-button {
-  padding: 15px 30px;/* espaçamento interno */
-  font-size: 1.8em;/* tamanho grande para fácil clique */
-  font-weight: bold;/* texto em negrito */
-  color: rgb(0, 0, 0);/* texto preto */
-  background-color: #E4000F;/* vermelho vibrante */
-  border: 5px solid rgb(0, 0, 0);/* borda preta */
-  border-radius: 10px;/* cantos arredondados */
-  cursor: pointer;/* cursor de mãozinha */
-  box-shadow: 0 5px 0 rgb(0, 0, 0);/* sombra para efeito 3D */
-  transition: all 0.1s;/* transição suave para clique */
-  margin-bottom: 10px;/* espaço abaixo do botão */
+  padding: 15px 30px;
+  /* espaçamento interno */
+  font-size: 1.8em;
+  /* tamanho grande para fácil clique */
+  font-weight: bold;
+  /* texto em negrito */
+  color: rgb(0, 0, 0);
+  /* texto preto */
+  background-color: #E4000F;
+  /* vermelho vibrante */
+  border: 5px solid rgb(0, 0, 0);
+  /* borda preta */
+  border-radius: 10px;
+  /* cantos arredondados */
+  cursor: pointer;
+  /* cursor de mãozinha */
+  box-shadow: 0 5px 0 rgb(0, 0, 0);
+  /* sombra para efeito 3D */
+  transition: all 0.1s;
+  /* transição suave para clique */
+  margin-bottom: 10px;
+  /* espaço abaixo do botão */
 }
 
 .start-button:active {
   box-shadow: 0 0 0 #a00;
-  transform: translateY(5px);/* efeito de clique */
+  transform: translateY(5px);
+  /* efeito de clique */
 }
 
 .blink {
-  font-size: 1.2em; /* tamanho da fonte */
+  font-size: 1.2em;
+  /* tamanho da fonte */
   color: rgb(0, 0, 0);
-  animation: blink-animation 1s infinite steps(1, start);/* animação de piscar */
+  animation: blink-animation 1s infinite steps(1, start);
+  /* animação de piscar */
 }
 
 .instruction-restart {
   font-size: 1.0em;
-  opacity: 0.7;/* texto um pouco transparente */
-  margin-top: 10px;/* espaço acima do texto */
+  opacity: 0.7;
+  /* texto um pouco transparente */
+  margin-top: 10px;
+  /* espaço acima do texto */
 }
 
 /* Classe adicionada ao Mario quando ele pula */
@@ -142,7 +175,7 @@
 }
 
 
-/* NOVO ESTILO CORRIGIDO: Garante que a imagem de Game Over ocupe a tela TODA */
+/* NOVO ESTILO CORRIGIDO: Garante que a imagem de Game Over e Vitória ocupe a tela TODA */
 .game-over-image {
   position: fixed;
   /* FIXA a imagem em relação à tela (viewport) */
@@ -206,7 +239,8 @@
   position: absolute;
   /* Para ficar por cima da tela do jogo */
   top: 10px;
-  left: 10px;/* canto superior esquerdo */
+  left: 10px;
+  /* canto superior esquerdo */
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   /* Fundo semi-transparente */
@@ -231,10 +265,22 @@
 
 
 body {
-  background-color: black;
+  background-color: #B36633;
   /* fundo preto fora do game */
 
 }
+
+.title-sub3 {
+  font-size: 2em; /* um pouco menor que o h2 */
+  color: #FFD700; /* amarelo vibrante */
+  -webkit-text-stroke: 2px black; /* contorno preto fino */
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* sombra para destaque */
+  margin-bottom: 30px;
+  letter-spacing: 4px;
+  transform: skew(-10deg); /* mesma inclinação que os outros */
+  text-align: center;
+}
+
 
 /* Animação das nuvens se movendo da direita para a esquerda */
 @keyframes cloud-animation {
@@ -313,4 +359,3 @@ body {
     transform: translateY(-20px);
   }
 }
-
